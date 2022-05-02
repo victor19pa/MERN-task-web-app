@@ -1,11 +1,8 @@
 import React from "react";
+import AppRouter from "./routes/AppRouter";
 
 const App = () => {
-  return (
-    <div>
-      <h1>MERN TASKS</h1>
-    </div>
-  );
+  return <AppRouter />;
 };
 
 export default App;
