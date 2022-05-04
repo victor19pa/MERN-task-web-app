@@ -35,7 +35,7 @@ const NuevaCuenta = () => {
               type="text"
               id="nombre"
               name="nombre"
-              placeholder="nombre"
+              placeholder="Nombre"
               onChange={onChange}
               autoComplete="false"
               value={nombre}
@@ -74,7 +74,7 @@ const NuevaCuenta = () => {
               type="password"
               id="confirmar"
               name="confirmar"
-              placeholder="confirmar contraseña"
+              placeholder="Confirmar contraseña"
               onChange={onChange}
               autoComplete="false"
               value={confirmar}
