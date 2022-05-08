@@ -2,8 +2,7 @@ import React, { useContext, useState } from "react";
 import ProyectoContext from "../../context/Proyectos/ProyectoContext";
 
 const NuevoProyecto = () => {
-  const { formulario } = useContext(ProyectoContext);
-  console.log(formulario);
+  const { formulario, mostrarFormulario } = useContext(ProyectoContext);
   const [project, setProject] = useState({
     nombre: "",
   });
@@ -23,11 +22,17 @@ const NuevoProyecto = () => {
     //validar el proyecto
 
     //agregar al state
+
+    //reiniciar form
   };
 
   return (
     <>
-      <button className="btn btn-block btn-primario" type="button">
+      <button
+        className="btn btn-block btn-primario"
+        type="button"
+        onClick={() => mostrarFormulario()}
+      >
         Nuevo Proyecto
       </button>
       {formulario && (
