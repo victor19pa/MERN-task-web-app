@@ -1,10 +1,39 @@
 import React from "react";
 
-const Tarea = () => {
+const Tarea = ({ tarea }) => {
   return (
-    <div>
-      <h1>desde tarea</h1>
-    </div>
+    <li className="tarea sombra">
+      <p>{tarea.nombre} </p>
+      <div className="estado">
+        {tarea.estado ? (
+          <button className="completo" type="button">
+            Completo
+          </button>
+        ) : (
+          <button className="incompleto" type="button">
+            Incompleto
+          </button>
+        )}
+      </div>
+
+      <div className="acciones">
+        <button
+          type="button"
+          className="btn btn-primario"
+          // onClick={() => seleccionarTarea(tarea) }
+        >
+          Editar
+        </button>
+
+        <button
+          type="button"
+          className="btn btn-secundario"
+          // onClick={() => tareaEliminar(tarea._id)}
+        >
+          Eliminar
+        </button>
+      </div>
+    </li>
   );
 };
 
