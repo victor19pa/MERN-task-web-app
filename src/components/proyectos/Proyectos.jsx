@@ -1,13 +1,17 @@
 import React from "react";
+import Barra from "../layout/Barra";
 import Sidebar from "../layout/Sidebar";
 
 const Proyectos = () => {
   return (
     <div className="contenedor-app">
       <Sidebar />
-      <div className="secction-principal">
+
+      <div className="seccion-principal">
+        <Barra />
+
         <main>
-          <div className="contenedor-tareas"></div>
+          <div className="contenedor-tareas">{/* <ListadoTareas /> */}</div>
         </main>
       </div>
     </div>
