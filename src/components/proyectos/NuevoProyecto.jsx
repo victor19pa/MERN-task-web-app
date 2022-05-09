@@ -2,8 +2,14 @@ import React, { useContext, useState } from "react";
 import ProyectoContext from "../../context/Proyectos/ProyectoContext";
 
 const NuevoProyecto = () => {
-  const { formulario, mostrarFormulario, agregarProyecto } =
-    useContext(ProyectoContext);
+  const {
+    formulario,
+    errorFormulario,
+    mostrarFormulario,
+    agregarProyecto,
+    mostrarError,
+  } = useContext(ProyectoContext);
+
   const [project, setProject] = useState({
     nombre: "",
   });
@@ -22,6 +28,7 @@ const NuevoProyecto = () => {
 
     //validar el proyecto
     if (nombre === "") {
+      mostrarError();
       return;
     }
     //agregar al state
@@ -57,6 +64,9 @@ const NuevoProyecto = () => {
             value="Agregar Proyecto"
           />
         </form>
+      )}
+      {errorFormulario && (
+        <p className="mensaje error">El nombre es obligatorio.</p>
       )}
     </>
   );
