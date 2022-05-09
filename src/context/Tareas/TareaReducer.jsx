@@ -3,6 +3,7 @@ import {
   ELIMINAR_TAREA,
   ESTADO_TAREA,
   TAREAS_PROYECTO,
+  TAREA_ACTUAL,
   VALIDAR_TAREA,
 } from "../../types";
 
@@ -37,6 +38,11 @@ export default (state, action) => {
         tareas: state.tareas.map((tarea) =>
           tarea.id === action.payload.id ? action.payload : tarea
         ),
+      };
+    case TAREA_ACTUAL:
+      return {
+        ...state,
+        tareaSeleccionada: action.payload,
       };
     default:
       return state;

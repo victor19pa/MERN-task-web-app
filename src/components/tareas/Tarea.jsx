@@ -3,7 +3,7 @@ import ProyectoContext from "../../context/Proyectos/ProyectoContext";
 import TareaContext from "../../context/Tareas/TareaContext";
 
 const Tarea = ({ tarea }) => {
-  const { eliminarTarea, obtenerTareas, cambiarEstadoTarea } =
+  const { eliminarTarea, obtenerTareas, cambiarEstadoTarea, setTareaActual } =
     useContext(TareaContext);
   const { proyecto } = useContext(ProyectoContext);
 
@@ -22,6 +22,10 @@ const Tarea = ({ tarea }) => {
     }
 
     cambiarEstadoTarea(tarea);
+  };
+
+  const seleccionarTarea = (tarea) => {
+    setTareaActual(tarea);
   };
 
   return (
@@ -51,7 +55,7 @@ const Tarea = ({ tarea }) => {
         <button
           type="button"
           className="btn btn-primario"
-          // onClick={() => seleccionarTarea(tarea) }
+          onClick={() => seleccionarTarea(tarea)}
         >
           Editar
         </button>
