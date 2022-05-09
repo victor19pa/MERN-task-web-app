@@ -11,6 +11,7 @@ const FormTarea = () => {
     obtenerTareas,
     tareaSeleccionada,
     actualizarTarea,
+    limpiarTarea,
   } = useContext(TareaContext);
 
   useEffect(() => {
@@ -58,6 +59,8 @@ const FormTarea = () => {
     } else {
       //actualizar tarea existente
       actualizarTarea(tarea);
+      //elimina tarea seleccionada del state
+      limpiarTarea();
     }
     //obtener y filtrar tareas proyecto actual
     obtenerTareas(proyectoActual.id);

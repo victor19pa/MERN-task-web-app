@@ -4,12 +4,14 @@ import {
   AGREGAR_TAREA,
   ELIMINAR_TAREA,
   ESTADO_TAREA,
+  LIMPIAR_TAREA,
   TAREAS_PROYECTO,
   TAREA_ACTUAL,
   VALIDAR_TAREA,
 } from "../../types";
 import TareaContext from "./TareaContext";
 import TareaReducer from "./TareaReducer";
+import { v4 as uuidv4 } from "uuid";
 
 const TareaState = (props) => {
   const initialStte = {
@@ -42,6 +44,7 @@ const TareaState = (props) => {
   };
 
   const agregarTareas = (tarea) => {
+    tarea.id = uuidv4();
     dispatch({
       type: AGREGAR_TAREA,
       payload: tarea,
@@ -82,6 +85,12 @@ const TareaState = (props) => {
     });
   };
 
+  const limpiarTarea = () => {
+    dispatch({
+      type: LIMPIAR_TAREA,
+    });
+  };
+
   return (
     <TareaContext.Provider
       value={{
@@ -96,6 +105,7 @@ const TareaState = (props) => {
         cambiarEstadoTarea,
         setTareaActual,
         actualizarTarea,
+        limpiarTarea,
       }}
     >
       {props.children}
