@@ -1,4 +1,5 @@
 import {
+  ACTUALIZAR_TAREA,
   AGREGAR_TAREA,
   ELIMINAR_TAREA,
   ESTADO_TAREA,
@@ -32,6 +33,7 @@ export default (state, action) => {
         ...state,
         tareas: state.tareas.filter((tarea) => tarea.id !== action.payload),
       };
+    case ACTUALIZAR_TAREA:
     case ESTADO_TAREA:
       return {
         ...state,

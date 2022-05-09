@@ -10,6 +10,7 @@ const FormTarea = () => {
     validarTarea,
     obtenerTareas,
     tareaSeleccionada,
+    actualizarTarea,
   } = useContext(TareaContext);
 
   useEffect(() => {
@@ -48,11 +49,16 @@ const FormTarea = () => {
       validarTarea();
       return;
     }
-    //pasar validacon
-    //agregar nueva tarea
-    tarea.proyectoId = proyectoActual.id;
-    tarea.estado = false;
-    agregarTareas(tarea);
+    //revisar si es edicion o nueva tarea
+    if (tareaSeleccionada === null) {
+      //agregar nueva tarea
+      tarea.proyectoId = proyectoActual.id;
+      tarea.estado = false;
+      agregarTareas(tarea);
+    } else {
+      //actualizar tarea existente
+      actualizarTarea(tarea);
+    }
     //obtener y filtrar tareas proyecto actual
     obtenerTareas(proyectoActual.id);
     //reiniciar form
