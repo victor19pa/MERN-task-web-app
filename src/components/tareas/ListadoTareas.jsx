@@ -1,9 +1,13 @@
 import React, { useContext } from "react";
 import ProyectoContext from "../../context/Proyectos/ProyectoContext";
+import TareaContext from "../../context/Tareas/TareaContext";
 import Tarea from "./Tarea";
 
 const ListadoTareas = () => {
   const { proyecto, eliminarProyecto } = useContext(ProyectoContext);
+  const { tareasProyecto } = useContext(TareaContext);
+
+  // const tareasProyecto = [];
 
   //sino hay proyecto seleccionado
   if (!proyecto) {
@@ -11,8 +15,6 @@ const ListadoTareas = () => {
   }
   //array destructuring para extraer actual
   const [proyectoActual] = proyecto;
-
-  const tareasProyecto = [];
 
   const onClickEliminar = () => {
     eliminarProyecto(proyectoActual.id);
