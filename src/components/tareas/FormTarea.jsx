@@ -10,9 +10,21 @@ const FormTarea = () => {
   //array destructuring para extraer actual
   const [proyectoActual] = proyecto;
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    //validar
+
+    //pasar validacon
+
+    //agregar nueva tarea
+
+    //reiniciar form
+  };
+
   return (
     <div className="formulario">
-      <form action="">
+      <form onSubmit={onSubmit}>
         <div className="contenedor-input">
           <input
             type="text"
