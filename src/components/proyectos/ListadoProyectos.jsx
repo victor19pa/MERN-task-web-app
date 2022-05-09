@@ -11,7 +11,8 @@ const ListadoProyectos = () => {
   }, []);
 
   //revisar si hay proyectos
-  if (proyectos.length === 0) return null;
+  if (proyectos.length === 0)
+    return <p className="mensaje error">No hay proyectos</p>;
 
   return (
     <ul className="listado-proyectos">

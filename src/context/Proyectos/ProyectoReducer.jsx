@@ -1,5 +1,6 @@
 import {
   AGREGAR_PROYECTO,
+  ELIMINAR_PROYECTO,
   FORMULARIO_PROYECTO,
   OBTENER_PROYECTO,
   PROYECTO_ACTUAL,
@@ -36,6 +37,14 @@ export default (state, action) => {
         proyecto: state.proyectos.filter(
           (proyecto) => proyecto.id === action.payload
         ),
+      };
+    case ELIMINAR_PROYECTO:
+      return {
+        ...state,
+        proyectos: state.proyectos.filter(
+          (proyecto) => proyecto.id !== action.payload
+        ),
+        proyecto: null,
       };
     default:
       return state;

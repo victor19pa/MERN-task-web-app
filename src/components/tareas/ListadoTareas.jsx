@@ -3,7 +3,7 @@ import ProyectoContext from "../../context/Proyectos/ProyectoContext";
 import Tarea from "./Tarea";
 
 const ListadoTareas = () => {
-  const { proyecto } = useContext(ProyectoContext);
+  const { proyecto, eliminarProyecto } = useContext(ProyectoContext);
 
   //sino hay proyecto seleccionado
   if (!proyecto) {
@@ -18,6 +18,10 @@ const ListadoTareas = () => {
     { nombre: "tres", estado: false, id: 3 },
     { nombre: "cuatroses", estado: true, id: 4 },
   ];
+
+  const onClickEliminar = () => {
+    eliminarProyecto(proyectoActual.id);
+  };
   return (
     <>
       <h2>Proyecto: {proyectoActual.nombre} </h2>
@@ -31,7 +35,11 @@ const ListadoTareas = () => {
         )}
       </ul>
 
-      <button type="button" className="btn btn-eliminar">
+      <button
+        type="button"
+        className="btn btn-eliminar"
+        onClick={onClickEliminar}
+      >
         Eliminar Proyecto &times;
       </button>
     </>
