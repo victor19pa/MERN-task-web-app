@@ -4,12 +4,12 @@ import TareaContext from "../../context/Tareas/TareaContext";
 
 const FormTarea = () => {
   const { proyecto } = useContext(ProyectoContext);
-  const { agregarTareas } = useContext(TareaContext);
+  const { agregarTareas, errorTarea, validarTarea, obtenerTareas } =
+    useContext(TareaContext);
 
   const [tarea, setTarea] = useState({
     nombre: "",
   });
-
   const { nombre } = tarea;
 
   //sino hay proyecto seleccionado
@@ -28,16 +28,22 @@ const FormTarea = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
     //validar
-
+    if (nombre.trim() === "") {
+      validarTarea();
+      return;
+    }
     //pasar validacon
-
     //agregar nueva tarea
     tarea.proyectoId = proyectoActual.id;
     tarea.estado = false;
     agregarTareas(tarea);
+    //obtener y filtrar tareas proyecto actual
+    obtenerTareas(proyectoActual.id);
     //reiniciar form
+    setTarea({
+      nombre: "",
+    });
   };
 
   return (
@@ -61,6 +67,9 @@ const FormTarea = () => {
           />
         </div>
       </form>
+      {errorTarea && (
+        <p className="mensaje error">¡El nombre de la tarea es necesario!</p>
+      )}
     </div>
   );
 };
