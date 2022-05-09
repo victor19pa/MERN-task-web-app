@@ -1,4 +1,5 @@
 import React, { useReducer } from "react";
+import { TAREAS_PROYECTO } from "../../types";
 import TareaContext from "./TareaContext";
 import TareaReducer from "./TareaReducer";
 
@@ -22,10 +23,18 @@ const TareaState = (props) => {
 
   const [state, dispatch] = useReducer(TareaReducer, initialStte);
 
+  const obtenerTareas = (proyectoId) => {
+    dispatch({
+      type: TAREAS_PROYECTO,
+      payload: proyectoId,
+    });
+  };
+
   return (
     <TareaContext.Provider
       value={{
         tareas: state.tareas,
+        obtenerTareas,
       }}
     >
       {props.children}
