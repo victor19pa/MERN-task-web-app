@@ -12,12 +12,7 @@ const ListadoTareas = () => {
   //array destructuring para extraer actual
   const [proyectoActual] = proyecto;
 
-  const tareasProyecto = [
-    { nombre: "Equis", estado: false, id: 1 },
-    { nombre: "doses", estado: true, id: 2 },
-    { nombre: "tres", estado: false, id: 3 },
-    { nombre: "cuatroses", estado: true, id: 4 },
-  ];
+  const tareasProyecto = [];
 
   const onClickEliminar = () => {
     eliminarProyecto(proyectoActual.id);
