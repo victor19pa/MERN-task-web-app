@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import {
   AGREGAR_TAREA,
   ELIMINAR_TAREA,
+  ESTADO_TAREA,
   TAREAS_PROYECTO,
   VALIDAR_TAREA,
 } from "../../types";
@@ -57,6 +58,13 @@ const TareaState = (props) => {
     });
   };
 
+  const cambiarEstadoTarea = (tarea) => {
+    dispatch({
+      type: ESTADO_TAREA,
+      payload: tarea,
+    });
+  };
+
   return (
     <TareaContext.Provider
       value={{
@@ -67,6 +75,7 @@ const TareaState = (props) => {
         agregarTareas,
         validarTarea,
         eliminarTarea,
+        cambiarEstadoTarea,
       }}
     >
       {props.children}

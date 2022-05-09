@@ -3,7 +3,8 @@ import ProyectoContext from "../../context/Proyectos/ProyectoContext";
 import TareaContext from "../../context/Tareas/TareaContext";
 
 const Tarea = ({ tarea }) => {
-  const { eliminarTarea, obtenerTareas } = useContext(TareaContext);
+  const { eliminarTarea, obtenerTareas, cambiarEstadoTarea } =
+    useContext(TareaContext);
   const { proyecto } = useContext(ProyectoContext);
 
   const [proyectoActual] = proyecto;
@@ -12,16 +13,35 @@ const Tarea = ({ tarea }) => {
     eliminarTarea(id);
     obtenerTareas(proyectoActual.id);
   };
+
+  const cambiarEstado = (tarea) => {
+    if (tarea.estado) {
+      tarea.estado = false;
+    } else {
+      tarea.estado = true;
+    }
+
+    cambiarEstadoTarea(tarea);
+  };
+
   return (
     <li className="tarea sombra">
       <p>{tarea.nombre} </p>
       <div className="estado">
         {tarea.estado ? (
-          <button className="completo" type="button">
+          <button
+            className="completo"
+            type="button"
+            onClick={() => cambiarEstado(tarea)}
+          >
             Completo
           </button>
         ) : (
-          <button className="incompleto" type="button">
+          <button
+            className="incompleto"
+            type="button"
+            onClick={() => cambiarEstado(tarea)}
+          >
             Incompleto
           </button>
         )}
