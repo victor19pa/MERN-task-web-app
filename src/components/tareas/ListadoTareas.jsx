@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+import ProyectoContext from "../../context/Proyectos/ProyectoContext";
 import Tarea from "./Tarea";
 
 const ListadoTareas = () => {
+  const { proyecto } = useContext(ProyectoContext);
+
+  //sino hay proyecto seleccionado
+  if (!proyecto) {
+    return <h2>Selecciona un proyecto</h2>;
+  }
+
+  //array destructuring para extraer actual
+  const [proyectoActual] = proyecto;
+
   const tareasProyecto = [
     { nombre: "Equis", estado: false, id: 1 },
     { nombre: "doses", estado: true, id: 2 },
@@ -10,7 +21,7 @@ const ListadoTareas = () => {
   ];
   return (
     <>
-      <h2>Proyecto Activo</h2>
+      <h2>Proyecto: {proyectoActual.nombre} </h2>
       <ul className="listado-tareas">
         {tareasProyecto.length === 0 ? (
           <li className="tarea">
